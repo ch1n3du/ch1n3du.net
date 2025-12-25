@@ -1,0 +1,7 @@
+languageCode = "en-us"
+title = "ch1n3du.net"
+baseurl = "https://www.ch1n3du.net/"
+theme = "hugo-zen"
+
+[params]
+  #dateformat = "2017-01-01"

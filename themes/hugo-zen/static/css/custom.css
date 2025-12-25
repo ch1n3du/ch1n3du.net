@@ -1,0 +1,417 @@
+/* FF Franziska */
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-book.woff2') format('woff2'),
+       url('/font/ff-franziska-book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-book-italic.woff2') format('woff2'),
+       url('/font/ff-franziska-book-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-bold.woff2') format('woff2'),
+       url('/font/ff-franziska-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+
+/* Input Mono */
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-ExtraLight.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-Regular.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-Italic.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-Bold.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-BoldItalic.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+/* Input Sans */
+@font-face {
+  font-family: 'Input Sans';
+  src: url('/font/InputSansCompressed-ExtraLight.woff2') format('woff2'),
+       url('/font/InputSansCompressed-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Sans';
+  src: url('/font/InputSansCompressed-Regular.woff2') format('woff2'),
+       url('/font/InputSansCompressed-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+@font-face {
+  font-family: 'Input Sans';
+  src: url('/font/InputSansCompressed-Italic.woff2') format('woff2'),
+       url('/font/InputSansCompressed-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+blockquote, dl, figure, form, ol, p, pre, table, ul {
+  margin-bottom: 1.0rem;
+}
+
+body {
+  font-family: 'FF Franziska', serif;
+  font-size: 1.7em;
+  line-height: 1.6;
+  background-color: #FCFCFC;
+  font-feature-settings: "lnum", "liga", "kern";
+}
+@media print {
+  body {
+    font-size: 1.4em;
+    line-height: 1.4;
+  }
+}
+
+pre, code {
+  font-family: "Input Mono", monospace;
+  font-weight: 400;
+  font-size: 90%;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+}
+
+pre > code {
+  line-height: 1.5;
+  font-size: 1.6rem;
+  overflow: auto;
+}
+@media print {
+  pre > code {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+}
+
+code {
+  padding-top: 0;
+  padding-bottom: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 1.2rem 1rem 1.2rem 2rem;
+  background: #ECEFF1;
+  border-left: 4px solid #90A4AE;
+  overflow: auto;
+}
+blockquote > p {
+  margin: 1rem 0;
+}
+
+td, th {
+  padding: 0.5rem 1.2rem;
+}
+
+th {
+  vertical-align: bottom;
+}
+
+a {
+  color: #303F9F;
+}
+
+a:hover {
+  color: #7986CB;
+}
+
+h1, h2, h3 {
+  font-family: 'Input Sans', sans-serif;
+  font-weight: 200;
+  letter-spacing: -0.12rem;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+}
+
+h1 { 
+  font-size: 2.75rem; 
+  margin-bottom: 0.5rem;
+  margin-top: 2.0rem;
+}
+
+h2 { 
+  font-size: 2.25rem; 
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  color: #455A64;
+}
+h3 { 
+  font-size: 1.75rem; 
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  color: #455A64;
+}
+
+blockquote > h1, blockquote > h2, blockquote > h3 {
+  margin-top: 0;
+}
+
+h1 > code, h2 > code, h3 > code {
+  font-weight: 200;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);;
+}
+
+figcaption p {
+  margin-top: 1.0rem;
+  margin-bottom: 1.0rem;
+  font-family: 'Input Sans', sans-serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+}
+
+header, footer {
+  margin: 3rem 0;
+  text-align: left;
+  font-family: 'Input Sans', sans-serif;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+  font-size: 1.6rem;
+  letter-spacing: 0.12rem;
+}
+
+footer {
+  font-size: 1.3rem;
+  letter-spacing: 0.08rem;
+}
+
+main {
+  margin: 3rem 0;
+}
+
+ul > li {
+  list-style: disc outside;
+  margin-top: 0.25rem;
+  margin-left: 4.0rem;
+}
+
+ol > li {
+  list-style: decimal outside;
+  margin-top: 0.25rem;
+  margin-left: 4.0rem;
+}
+
+ol ol, ol ul, ul ol, ul ul {
+  margin: 0.5rem 0 1.0rem 0;
+  font-size: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+}
+@media print {
+  .container {
+    width: 100%;
+  }
+}
+
+.site-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-family: 'Input Sans', monospace;
+  font-weight: 200;
+  font-size: 3.0rem;
+  line-height: 1rem;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+}
+.site-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-colophon {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  padding-top: 0px;
+  padding-left: 4rem;
+  font-size 1.8em;
+}
+.site-colophon a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-colophon a:hover {
+  text-decoration: underline;
+}
+
+.entry-title {
+  font-family: 'Input Sans', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.entry-title a {
+  text-decoration: none;
+}
+
+.entry-title a:hover {
+  text-decoration: underline;
+}
+
+.entry-meta {
+  display: inline-block;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  font-size: 0.9em;
+  letter-spacing: 0.05rem;
+  line-height: 1rem;
+  color: #888;
+}
+
+.entry-meta-main {
+  margin-bottom: 0;
+}
+
+.entry-description {
+  font-style: italic;
+  margin-bottom: 3.0rem;
+}
+
+.footer-link {
+  margin: 2rem 0;
+}
+
+.hr {
+  height: 1px;
+  margin: 1rem 0;
+  background: #90A4AE;
+}
+
+.footnotes {
+  font-size: 90%;
+}
+
+.footnotes li {
+  margin-left: 2.0rem;
+  max-width: 90%;
+}
+
+header .hr {
+ margin-top: 0;
+}
+
+.figshrink img {
+  max-width: 90%;
+}
+
+.toc-container {
+  float: right;
+  max-width: 30%;
+  position: relative;
+  margin: 3.0rem 0 2.0rem 2.0rem;
+  padding: 1.0rem 1.5rem 1.5rem 1.5rem;
+  font-family: "Input Sans";
+  font-weight: 400;
+  font-size: 1.4rem;
+  font-feature-settings: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  color: #455A64; 
+}
+
+.toc-header {
+  padding-bottom: 1.0rem;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  color: black;
+}
+
+.toc-container ul {
+  margin-bottom: inherit;
+}
+
+.toc-container code {
+  font-weight: 400;
+}
+
+.toc-container a {
+  text-decoration: none;
+}
+
+.toc-container ul > li {
+  list-style-type: decimal;
+  margin-bottom: 0;
+  margin-top: 0.1rem;
+  margin-left: 2.2rem;
+  line-height: 1.5;
+}
+
+.toc-container ul ul {
+  margin: inherit;
+  margin-left: 1.5rem;
+  font-size: inherit;
+}
+
+.toc-container ul ul > li {
+  list-style-type: lower-alpha;
+  margin-left: 0.5rem;
+  font-size: 1.3rem;
+}
