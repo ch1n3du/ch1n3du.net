@@ -5,3 +5,7 @@ theme = "hugo-zen"
 
 [params]
   #dateformat = "2017-01-01"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
