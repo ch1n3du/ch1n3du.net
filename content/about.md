@@ -10,9 +10,9 @@ I love computers, I think they're neat.
 
 # Contact info
 
-* Email `danielonyesoh@gmail.com`
+* Email `me@ch1n3du.net`
 * Twitter [`@ch1n3du3`](https://twitter.com/ch1n3du3)
-* Bluesky [`@ch1n3du.bsky.social`](https://bsky.app/profile/ch1n3du.bsky.social)
+* Bluesky [`@ch1n3du.net`](https://bsky.app/profile/ch1n3du.net)
 * Github [`ch1n3du`](https://github.com/ch1n3du)
 * Goodreads [`ch1n3du`](https://www.goodreads.com/user/show/63564241-ch1n3du)
 
