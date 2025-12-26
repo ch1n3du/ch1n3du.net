@@ -20,4 +20,4 @@ I also love meeting new people, you can reach me at:
 
 # Colophon
 
-The theming of this site borrow heavily from the great work of [`int08h` (Start Stock)](https://int08h.com/about/).
+The theming of this site borrows heavily from the great work of [`int08h` (Start Stock)](https://int08h.com/about/).
