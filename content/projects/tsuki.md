@@ -30,4 +30,4 @@ At a glance, it's basic features are:
 - Ocaml-style modules (not fully implemented)
 
 I had a lot of fun building this, especially combing through the WebAssembly specification while working on codegen.
-There's still some features like: type inference, algebraic datatypes (with exhaustive pattern matching) and a language server that I couldn't include because of my deadline but I plan to include in my next language.
+Sadly I couldn't include some features like: type inference, algebraic datatypes (with exhaustive pattern matching) and a language server because of my thesis deadline I plan to include them in my next language though :)
