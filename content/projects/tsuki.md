@@ -5,7 +5,7 @@ date: 2024-02-09
 year: "2024"
 status: "complete"
 technologies: ["Compilers", "WebAssembly", "Rust"]
-github: "https://github.com/ch1n3du/quantum-sim"
+github: "https://github.com/ch1n3du/tsuki"
 ---
 
 For my bachelor's thesis I built Tsuki, a simple functional programming language that targets the WebAssembly VM.

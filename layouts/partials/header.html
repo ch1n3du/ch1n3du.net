@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/projects.css">
   <link rel="stylesheet" href="/css/syntax.css">
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ .Site.Title }}">
+  <script src="/js/theme.js"></script>
   <title>{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
 </head>
 <body>
@@ -21,6 +22,7 @@
       <h1 class="site-title"><a href="/" class="site-title">{{ .Site.Title }}</a></h1>
     </div>
     <div class="eleven columns">
+      <button class="theme-toggle u-pull-right" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
       <span class="site-colophon u-pull-right"><a href="/about/">About</a></span>
       <span class="site-colophon u-pull-right"><a href="/projects/">Projects</a></span>
       <!--<span class="site-colophon u-pull-right"><a href="https://github.com/ch1n3du">Github</a></span>-->
