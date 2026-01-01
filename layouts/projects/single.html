@@ -1,0 +1,47 @@
+{{ partial "header.html" . }}
+
+<main role="main">
+  <article itemscope itemtype="http://schema.org/CreativeWork">
+    <header class="project-header">
+      <h1 class="entry-title" itemprop="name">{{ .Title }}</h1>
+
+      <div class="project-meta-single">
+        {{ with .Params.status }}
+          <span class="project-status project-status-{{ . }}">{{ . }}</span>
+        {{ end }}
+        {{ with .Params.year }}
+          <span class="project-year">{{ . }}</span>
+        {{ end }}
+        {{ with .Params.technologies }}
+          <div class="project-tech-tags">
+            {{ range . }}
+              <span class="tech-tag">{{ . }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+
+      <div class="project-links-single">
+        {{ with .Params.github }}
+          <a href="{{ . }}" class="project-link-button">View Source</a>
+        {{ end }}
+        {{ with .Params.demo }}
+          <a href="{{ . }}" class="project-link-button">Live Demo</a>
+        {{ end }}
+        {{ with .Params.paper }}
+          <a href="{{ . }}" class="project-link-button">Read Paper</a>
+        {{ end }}
+      </div>
+    </header>
+
+    <div class="project-content" itemprop="text">
+      {{ .Content }}
+    </div>
+
+    <div class="footer-link">
+      <a href="/projects/">← Back to Projects</a>
+    </div>
+  </article>
+</main>
+
+{{ partial "footer.html" . }}

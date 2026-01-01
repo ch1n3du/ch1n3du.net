@@ -6,6 +6,10 @@ theme = "hugo-zen"
 [params]
   #dateformat = "2017-01-01"
 
+[markup]
+  [markup.highlight]
+    noClasses = false
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
