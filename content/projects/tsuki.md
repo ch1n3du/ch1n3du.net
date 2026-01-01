@@ -3,7 +3,7 @@ title: "Tsuki"
 description: "A simple functional programming language targeting WebAssembly virtual machine."
 date: 2024-02-09
 year: "2024"
-status: "complete"
+status: "archived"
 technologies: ["Compilers", "WebAssembly", "Rust"]
 github: "https://github.com/ch1n3du/tsuki"
 ---
