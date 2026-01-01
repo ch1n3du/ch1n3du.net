@@ -2,7 +2,7 @@
 date: "2025-12-25"
 title: "About me"
 description: ""
-hidefromhome: "true"
+hidefromhome: true
 ---
 
 I love computers, I think they're neat.
