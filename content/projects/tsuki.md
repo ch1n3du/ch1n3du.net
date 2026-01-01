@@ -1,6 +1,6 @@
 ---
 title: "Tsuki"
-description: "A functional programming language targeting WebAssembly virtual machine."
+description: "A simple functional programming language targeting WebAssembly virtual machine."
 date: 2024-02-09
 year: "2024"
 status: "complete"
