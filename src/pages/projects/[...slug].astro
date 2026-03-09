@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const showDrafts = process.env.SHOW_DRAFTS
+    ? process.env.SHOW_DRAFTS === 'true'
+    : !import.meta.env.PROD;
+
+  const projects = await getCollection('projects', ({ data }) => {
+    return showDrafts || !data.draft;
+  });
+
+  return projects.map((project) => ({
+    params: { slug: project.id.replace(/\.mdx?$/, '') },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title}>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/CreativeWork">
+      <header class="project-header">
+        <h1 class="entry-title" itemprop="name">{project.data.title}</h1>
+
+        <div class="project-meta-single">
+          {project.data.status && (
+            <span class={`project-status project-status-${project.data.status}`}>{project.data.status}</span>
+          )}
+          {project.data.year && (
+            <span class="project-year">{project.data.year}</span>
+          )}
+          {project.data.technologies.length > 0 && (
+            <div class="project-tech-tags">
+              {project.data.technologies.map((tech: string) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div class="project-links-single">
+          {project.data.github && (
+            <a href={project.data.github} class="project-link-button">View Source</a>
+          )}
+          {project.data.demo && (
+            <a href={project.data.demo} class="project-link-button">Live Demo</a>
+          )}
+          {project.data.paper && (
+            <a href={project.data.paper} class="project-link-button">Read Paper</a>
+          )}
+        </div>
+      </header>
+
+      <div class="project-content" itemprop="text">
+        <Content />
+      </div>
+
+      <div class="footer-link">
+        <a href="/projects/">&larr; Back to Projects</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>

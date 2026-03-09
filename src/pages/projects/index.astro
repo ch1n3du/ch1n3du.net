@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const showDrafts = process.env.SHOW_DRAFTS
+  ? process.env.SHOW_DRAFTS === 'true'
+  : !import.meta.env.PROD;
+
+const projects = await getCollection('projects', ({ data }) => {
+  return showDrafts || !data.draft;
+});
+
+const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects">
+  <main role="main">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Research and development work</p>
+
+    <div class="projects-grid">
+      {sortedProjects.map((project) => (
+        <article class="project-card" itemscope itemtype="http://schema.org/CreativeWork">
+          <div class="project-card-header">
+            <h2 class="project-title" itemprop="name">
+              <a href={`/projects/${project.id.replace(/\.mdx?$/, '')}/`}>{project.data.title}</a>
+            </h2>
+            {project.data.status && (
+              <span class={`project-status project-status-${project.data.status}`}>{project.data.status}</span>
+            )}
+          </div>
+
+          <div class="project-meta">
+            {project.data.year && (
+              <span class="project-year">{project.data.year}</span>
+            )}
+            {project.data.technologies.length > 0 && (
+              <>
+                <span class="project-separator">&bull;</span>
+                <span class="project-tech">{project.data.technologies.join(', ')}</span>
+              </>
+            )}
+          </div>
+
+          <p class="project-description" itemprop="description">{project.data.description}</p>
+
+          <div class="project-links">
+            {project.data.github && (
+              <a href={project.data.github} class="project-link">Source</a>
+            )}
+            {project.data.demo && (
+              <a href={project.data.demo} class="project-link">Demo</a>
+            )}
+            {project.data.paper && (
+              <a href={project.data.paper} class="project-link">Paper</a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

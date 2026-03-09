@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages', 'about');
+if (!entry) throw new Error('About page not found');
+
+const { Content, headings } = await render(entry);
+const showToc = entry.data.toc !== false;
+---
+
+<BaseLayout title={entry.data.title}>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">{entry.data.title}</h1>
+      <span class="entry-meta">
+        <time itemprop="datePublished" datetime={entry.data.date.toISOString().split('T')[0]}>
+          {entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}
+        </time>
+      </span>
+      {showToc && headings.length > 0 && (
+        <span class="toc-container">
+          <span class="toc-header">
+            CONTENTS
+          </span>
+          <nav id="TableOfContents">
+            <ul>
+              {headings.filter(h => h.depth <= 3).map(h => (
+                <li>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </span>
+      )}
+      <section itemprop="entry-text">
+        <Content />
+      </section>
+    </article>
+  </main>
+</BaseLayout>

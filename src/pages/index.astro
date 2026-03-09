@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const pages = await getCollection('pages', ({ data }) => {
+  return data.hidefromhome !== true;
+});
+
+const sortedPages = pages.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="ch1n3du.net">
+  <main role="main">
+    {sortedPages.map((page) => (
+      <article itemscope itemtype="http://schema.org/Blog">
+        <h1 class="entry-title" itemprop="headline">
+          <a href={`/${page.id.replace(/\.mdx?$/, '')}/`}>{page.data.title}</a>
+        </h1>
+        <span class="entry-meta entry-meta-main">
+          <time itemprop="datePublished" datetime={page.data.date.toISOString().split('T')[0]}>
+            {page.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}
+          </time> | {page.body ? page.body.split(/\s+/).length : 0} words
+        </span>
+        <p class="entry-description">{page.data.description}</p>
+      </article>
+    ))}
+  </main>
+</BaseLayout>

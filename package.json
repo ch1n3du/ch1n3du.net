@@ -1,0 +1,18 @@
+{
+  "name": "ch1n3du-net",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "dev:drafts": "SHOW_DRAFTS=true astro dev",
+    "dev:no-drafts": "SHOW_DRAFTS=false astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "astro": "^5.18.0",
+    "rehype-slug": "^6.0.0"
+  }
+}

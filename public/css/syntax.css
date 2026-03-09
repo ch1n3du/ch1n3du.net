@@ -1,0 +1,22 @@
+/* Shiki dual-theme CSS variable bridge */
+/* Light theme (default) */
+pre.astro-code,
+pre.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+/* Dark theme */
+[data-theme="dark"] pre.astro-code,
+[data-theme="dark"] pre.astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Code block styling to match Hugo theme */
+pre.astro-code {
+  padding: 1.2rem 1.5rem;
+  border-radius: 2px;
+  overflow-x: auto;
+  margin-bottom: 1.0rem;
+}
