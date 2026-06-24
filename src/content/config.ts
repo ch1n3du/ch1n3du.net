@@ -23,6 +23,9 @@ const projects = defineCollection({
     github: z.string().optional(),
     demo: z.string().optional(),
     paper: z.string().optional(),
+    // When set, the card links straight to this URL (e.g. a /apps/<name>/ page)
+    // instead of generating a writeup detail page. See src/apps/README.md.
+    link: z.string().optional(),
     draft: z.boolean().optional().default(false),
   }),
 });

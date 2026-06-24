@@ -8,7 +8,9 @@ export async function getStaticPaths() {
     : !import.meta.env.PROD;
 
   const projects = await getCollection('projects', ({ data }) => {
-    return showDrafts || !data.draft;
+    // Projects with `link` point their card straight at an external/app URL and
+    // have no writeup, so don't generate a detail page for them.
+    return (showDrafts || !data.draft) && !data.link;
   });
 
   return projects.map((project) => ({
