@@ -2,8 +2,12 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context) {
+  const showDrafts = process.env.SHOW_DRAFTS
+    ? process.env.SHOW_DRAFTS === 'true'
+    : !import.meta.env.PROD;
+
   const pages = await getCollection('pages', ({ data }) => {
-    return data.hidefromhome !== true;
+    return (showDrafts || !data.draft) && data.hidefromhome !== true;
   });
 
   const sortedPages = pages.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());

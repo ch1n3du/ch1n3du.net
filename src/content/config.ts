@@ -8,6 +8,7 @@ const pages = defineCollection({
     description: z.string().optional().default(''),
     hidefromhome: z.boolean().optional().default(false),
     toc: z.boolean().optional().default(true),
+    draft: z.boolean().optional().default(false),
   }),
 });
 

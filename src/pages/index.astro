@@ -3,8 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
 
+const showDrafts = process.env.SHOW_DRAFTS
+  ? process.env.SHOW_DRAFTS === 'true'
+  : !import.meta.env.PROD;
+
 const pages = await getCollection('pages', ({ data }) => {
-  return data.hidefromhome !== true;
+  return (showDrafts || !data.draft) && data.hidefromhome !== true;
 });
 
 const sortedPages = pages.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
