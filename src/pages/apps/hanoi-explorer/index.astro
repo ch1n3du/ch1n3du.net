@@ -1,0 +1,68 @@
+---
+import AppLayout from '../../../layouts/AppLayout.astro';
+---
+
+<AppLayout title="Tower of Hanoi — state-space explorer">
+  <div id="app">
+    <header class="topbar">
+      <h1>
+        Tower of Hanoi <span class="topbar-sub">state-space explorer</span>
+        <a class="topbar-link" href="/projects/">← back to projects</a>
+      </h1>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+    </header>
+    <main class="canvas-wrap">
+      <div class="graph-pane">
+        <svg id="graph" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <aside class="sidebar" id="sidebar">
+        <section class="sidebar-section">
+          <div class="sidebar-header">
+            <h2>Settings</h2>
+            <span class="sidebar-sub" id="stats"></span>
+          </div>
+          <div class="settings">
+            <span class="setting-label">n</span>
+            <div class="n-stepper">
+              <button class="stepper-btn" id="n-dec" type="button" aria-label="decrease n">−</button>
+              <span class="n-display" id="n-display">3</span>
+              <button class="stepper-btn" id="n-inc" type="button" aria-label="increase n">+</button>
+            </div>
+
+            <span class="setting-label">layout</span>
+            <div class="toggle" id="layout-toggle">
+              <button data-value="sierpinski" class="active">Sierpinski</button>
+              <button data-value="force">Force</button>
+            </div>
+
+            <span class="setting-label">edges</span>
+            <div class="toggle" id="edges-toggle">
+              <button data-value="undirected" class="active">Undirected</button>
+              <button data-value="directed">Directed</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-section">
+          <div class="sidebar-header">
+            <h2>State</h2>
+            <span class="sidebar-sub" id="sidebar-sub">click a node</span>
+          </div>
+          <figure class="board-frame">
+            <svg id="board" class="board" xmlns="http://www.w3.org/2000/svg"></svg>
+          </figure>
+          <div class="sidebar-actions">
+            <button id="reverse-btn" class="action-btn" disabled title="Replay the last move in reverse">
+              <span class="action-icon">↶</span>
+              <span>Reverse last move</span>
+            </button>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    import '../../../apps/hanoi-explorer/main';
+  </script>
+</AppLayout>

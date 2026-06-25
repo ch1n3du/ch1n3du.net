@@ -1,0 +1,144 @@
+<div class="hr"></div>
+<section class="newsletter">
+  <h2 class="newsletter-heading">Newsletter</h2>
+  <p class="newsletter-description">Subscribe to get new posts delivered to your inbox.</p>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/ch1n3du"
+    method="post"
+    class="newsletter-form"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="your@email.com"
+      required
+      aria-label="Email address"
+      class="newsletter-input"
+    />
+    <button type="submit" class="newsletter-button">Subscribe</button>
+  </form>
+  <p class="newsletter-message" style="display:none;"></p>
+</section>
+
+<script is:inline>
+  document.querySelector('.newsletter-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const button = form.querySelector('.newsletter-button');
+    const message = document.querySelector('.newsletter-message');
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      if (res.ok || res.status === 303) {
+        form.style.display = 'none';
+        message.textContent = 'Thanks! Check your email to confirm.';
+        message.style.display = 'block';
+      } else {
+        message.textContent = 'Something went wrong. Please try again.';
+        message.style.display = 'block';
+        button.disabled = false;
+        button.textContent = 'Subscribe';
+      }
+    } catch {
+      message.textContent = 'Something went wrong. Please try again.';
+      message.style.display = 'block';
+      button.disabled = false;
+      button.textContent = 'Subscribe';
+    }
+  });
+</script>
+
+<style>
+  .newsletter {
+    margin: 4rem 0 0;
+  }
+
+  .newsletter-heading {
+    font-family: 'Input Sans', sans-serif;
+    font-weight: 200;
+    font-size: 2.25rem;
+    letter-spacing: -0.12rem;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .newsletter-description {
+    font-family: 'FF Franziska', serif;
+    font-style: italic;
+    color: var(--meta-color);
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+
+  .newsletter-input,
+  .newsletter-button {
+    font-family: 'Input Sans', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.7rem 1rem;
+    margin: 0;
+    border: 1px solid var(--hr-color);
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  .newsletter-input {
+    background: var(--bg-color);
+    color: var(--text-color);
+    flex: 1;
+    min-width: 0;
+    transition: border-color 0.2s ease;
+  }
+
+  .newsletter-input::placeholder {
+    color: var(--meta-color);
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--link-color);
+  }
+
+  .newsletter-button {
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .newsletter-button:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
+
+  .newsletter-message {
+    font-family: 'Input Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 500px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    .newsletter-input,
+    .newsletter-button {
+      width: 100%;
+    }
+  }
+</style>

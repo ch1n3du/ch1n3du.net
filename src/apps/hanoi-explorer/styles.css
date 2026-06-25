@@ -1,0 +1,750 @@
+/* Site faces, pulled in directly because /apps/ pages don't load custom.css.
+   Files live in public/font/ (served at /font/). Same subset the site ships. */
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-book.woff2') format('woff2'),
+       url('/font/ff-franziska-book.woff') format('woff');
+  font-weight: 400; font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-book-italic.woff2') format('woff2'),
+       url('/font/ff-franziska-book-italic.woff') format('woff');
+  font-weight: 400; font-style: italic;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+@font-face {
+  font-family: 'FF Franziska';
+  src: url('/font/ff-franziska-bold.woff2') format('woff2'),
+       url('/font/ff-franziska-bold.woff') format('woff');
+  font-weight: 700; font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+@font-face {
+  font-family: 'Input Sans';
+  src: url('/font/InputSansCompressed-ExtraLight.woff2') format('woff2'),
+       url('/font/InputSansCompressed-ExtraLight.woff') format('woff');
+  font-weight: 200; font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+@font-face {
+  font-family: 'Input Sans';
+  src: url('/font/InputSansCompressed-Regular.woff2') format('woff2'),
+       url('/font/InputSansCompressed-Regular.woff') format('woff');
+  font-weight: 400; font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+@font-face {
+  font-family: 'Input Mono';
+  src: url('/font/InputMonoCompressed-Regular.woff2') format('woff2'),
+       url('/font/InputMonoCompressed-Regular.woff') format('woff');
+  font-weight: 400; font-style: normal;
+  unicode-range: U+A,U+20-7E,U+A9,U+2013,U+2018,U+2019,U+201C,U+201D,U+2026;
+}
+
+/* Palette is derived from the site tokens (public/css/custom.css): cool
+   near-white/near-black surfaces, slate (Blue Grey) neutrals, and a single
+   indigo interaction accent. Mirrors the site's light/dark theme switch so an
+   embedded explorer honors the reader's chosen mode. */
+:root {
+  color-scheme: light;
+
+  /* Type roles, mirroring the site: a thin sans display/UI face, a serif body
+     for descriptive prose, a mono for data. --ui-feat applies the same Input
+     stylistic sets the site uses (slashed zero, etc.). */
+  --font-ui: 'Input Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'FF Franziska', Palatino, Georgia, 'Times New Roman', serif;
+  --font-mono: 'Input Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --ui-feat: "ss11" 1, "ss12" 1, "ss02" 1, "ss03" 1, "ss10" 1, "zero" 1;
+  --bg: #fcfcfc;              /* site --bg-color */
+  --surface: #ffffff;         /* faint inset depth for frames/steppers */
+  --rule: #d4dadd;            /* cool hairline */
+  --rule-soft: #eceff1;       /* Blue Grey 50 */
+  --fg: #222222;              /* site --text-color */
+  --muted: #5a6b73;           /* cool secondary text */
+  --muted-2: #90a4ae;         /* Blue Grey 300 */
+  --accent: #303f9f;          /* site --link-color, Indigo 700 */
+  --accent-weak: rgba(48, 63, 159, 0.10);
+  --node: #455a64;            /* site --heading-color, Blue Grey 700 */
+  --edge: #b4c0c6;            /* cool pencil gray */
+  --start: #00796b;           /* teal — "go" */
+  --goal: #bf4d36;            /* brick — the one warm note, for the goal */
+  --selection: var(--accent); /* focus/selection == the brand accent */
+  --disk-stroke: #37474f;
+  --peg: #607d8b;             /* slate pegs (was wood) */
+  --grid: rgba(69, 90, 100, 0.05); /* slate graph-paper lines */
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1a1a1a;              /* site dark --bg-color */
+  --surface: #202020;
+  --rule: #363c40;
+  --rule-soft: #24292c;
+  --fg: #e0e0e0;              /* site dark --text-color */
+  --muted: #9aa7ad;
+  --muted-2: #6b777e;
+  --accent: #7986cb;          /* site dark --link-color, Indigo 300 */
+  --accent-weak: rgba(121, 134, 203, 0.16);
+  --node: #90a4ae;            /* Blue Grey 300 — ink-on-dark */
+  --edge: #454f56;
+  --start: #4db6ac;           /* teal, lightened for dark */
+  --goal: #e0876f;            /* brick, lightened for dark */
+  --disk-stroke: #0f1417;
+  --peg: #546e7a;
+  --grid: rgba(176, 190, 197, 0.045);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ---------- Topbar (title only) ---------- */
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 32px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Theme toggle — quiet, mirrors the site's ☀️/🌙 control. theme.js swaps the
+   glyph and aria-label on load and on click. */
+.theme-toggle {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 4px;
+  opacity: 0.7;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+.theme-toggle:hover { opacity: 1; transform: scale(1.08); }
+
+.topbar h1 {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 200;
+  font-size: 1.85rem;
+  letter-spacing: -0.035em;
+  font-feature-settings: var(--ui-feat);
+  line-height: 1.2;
+}
+.topbar-sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  color: var(--muted);
+  font-size: 0.8em;
+  margin-left: 6px;
+}
+
+/* ---------- Canvas + sidebar ---------- */
+
+.canvas-wrap {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.graph-pane {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--bg);
+  /* Faint graph-paper texture — just paper feel, not measurement marks. */
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+#graph {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  user-select: none;
+}
+
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--bg);
+  border-left: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 22px;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sidebar-section + .sidebar-section {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
+}
+.sidebar-header h2 {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-feature-settings: var(--ui-feat);
+  color: var(--fg);
+}
+.sidebar-sub {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+  font-variant-numeric: tabular-nums oldstyle-nums;
+}
+
+/* ---------- Settings (in sidebar) ---------- */
+
+.settings {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.setting-label {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-feature-settings: var(--ui-feat);
+  font-style: normal;
+}
+
+/* Stepper widget for n — value is display-only, buttons are the only way to change it. */
+.n-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  justify-self: start;
+}
+.stepper-btn {
+  width: 26px;
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+}
+.stepper-btn:hover:not(:disabled) {
+  background: var(--rule-soft);
+  color: var(--accent);
+}
+.stepper-btn:active:not(:disabled) {
+  background: var(--rule);
+}
+.stepper-btn:disabled {
+  color: var(--muted-2);
+  opacity: 0.4;
+  cursor: default;
+}
+.n-display {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4ch;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: var(--ui-feat);
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  user-select: none;
+}
+
+/* Small-caps "tabs" toggle, maroon underline for active */
+.toggle {
+  display: inline-flex;
+  background: transparent;
+  border: none;
+  gap: 4px;
+}
+.toggle button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 2px 6px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-feature-settings: var(--ui-feat);
+  border-bottom: 2px solid transparent;
+}
+.toggle button:hover:not(.active) { color: var(--fg); }
+.toggle button.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Board frame ---------- */
+
+.board-frame {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.board {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  background: transparent;
+}
+
+.board-base,
+.board-peg {
+  fill: var(--peg);
+}
+.board-peg-label {
+  fill: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-feature-settings: var(--ui-feat);
+}
+.board-disk {
+  stroke: var(--disk-stroke);
+  stroke-width: 1;
+}
+
+/* ---------- Reverse-move button ---------- */
+
+.sidebar-actions {
+  display: flex;
+  gap: 12px;
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-feature-settings: var(--ui-feat);
+  padding: 4px 2px;
+  cursor: pointer;
+}
+.action-btn:hover:not(:disabled) {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.action-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.action-icon {
+  font-size: 1.05rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* ---------- Edges ---------- */
+
+.edge {
+  stroke: var(--edge);
+  stroke-width: 1;
+  pointer-events: none;
+  transition: stroke 80ms ease, stroke-width 80ms ease;
+}
+.edge-hit {
+  stroke: transparent;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+.edges-directed .edge {
+  marker-end: url(#arrow);
+  marker-start: url(#arrow);
+}
+.edge-group:hover .edge {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.arrow {
+  fill: var(--muted-2);
+}
+
+/* ---------- Nodes ---------- */
+
+.node-group { cursor: pointer; }
+.node-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+.node {
+  fill: var(--node);
+  stroke: none;
+  pointer-events: none;
+  /* transform-based scale is reliably animatable across browsers; r in CSS
+     is supported but flaky in some engines. */
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 100ms ease, fill 100ms ease;
+}
+.node-start {
+  fill: var(--start);
+  stroke: var(--bg);
+  stroke-width: 1.4;
+}
+.node-goal {
+  fill: var(--goal);
+  stroke: var(--bg);
+  stroke-width: 1.4;
+}
+.node-label {
+  fill: var(--fg);
+  font-family: inherit;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: normal;
+  pointer-events: none;
+}
+
+/* Default nodes start at r=3 → scale 2.5 ≈ effective r=7.5 */
+.node-group:hover .node {
+  fill: var(--accent);
+  transform: scale(2.5);
+}
+/* Start/goal start at r=7 → scale 1.6 ≈ effective r=11.2 */
+.node-group-start:hover .node,
+.node-group-goal:hover .node {
+  transform: scale(1.6);
+}
+
+/* ---------- Selection ring ---------- */
+
+.selection-ring {
+  fill: none;
+  stroke: var(--selection);
+  stroke-width: 2;
+}
+
+/* ---------- Quality floor: focus + reduced motion ---------- */
+
+.stepper-btn:focus-visible,
+.toggle button:focus-visible,
+.action-btn:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, body, .node, .edge, .theme-toggle,
+  .stepper-btn, .action-btn, .anim-btn,
+  .map-cell, .map-hole {
+    transition: none !important;
+  }
+}
+
+/* ---------- Animation page (anim.html) ---------- */
+
+.topbar-link {
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-left: 18px;
+  border-bottom: 1px solid transparent;
+}
+.topbar-link:hover { border-bottom-color: var(--accent); }
+
+.anim-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  min-height: 0;
+  background-image:
+    linear-gradient(to right, rgba(80, 60, 30, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(80, 60, 30, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.anim-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#anim {
+  width: min(80vh, 720px);
+  height: min(80vh, 720px);
+  max-width: 100%;
+  display: block;
+}
+
+.anim-tri polygon {
+  fill: rgba(128, 0, 0, 0.07);
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.anim-caption {
+  display: block;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--fg);
+  text-align: center;
+}
+
+figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.anim-rule {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.anim-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.anim-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.anim-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Map page (map.html) ---------- */
+
+.map-wrap {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 0;
+  background-image:
+    linear-gradient(to right, rgba(80, 60, 30, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(80, 60, 30, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.map-figure {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-width: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  max-width: min(86vh, 1000px);
+  display: block;
+}
+
+.map-aside {
+  width: 340px;
+  flex-shrink: 0;
+  background: var(--bg);
+  border-left: 1px solid var(--rule);
+  padding: 18px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.map-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map-address {
+  font-variant-numeric: tabular-nums oldstyle-nums;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+.map-validity {
+  margin: 0;
+  font-size: 0.92rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.map-validity.is-gap {
+  color: var(--muted-2);
+}
+
+.map-legend {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+.map-legend h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-weight: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+}
+.map-legend p {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.map-legend code {
+  font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  color: var(--fg);
+}
+.map-note {
+  font-style: italic;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 4px;
+  vertical-align: -1px;
+  border: 1px solid var(--rule);
+}
+.swatch-state { background: rgba(128, 0, 0, 0.07); border-color: var(--accent); }
+.swatch-hole { background: rgba(90, 74, 50, 0.16); }
+
+/* Triangle cells */
+.map-cell {
+  fill: rgba(128, 0, 0, 0.07);
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 90ms ease;
+}
+.map-cell:hover { fill: rgba(128, 0, 0, 0.16); }
+.map-cell.is-active {
+  fill: rgba(200, 134, 26, 0.28);
+  stroke: var(--selection);
+  stroke-width: 2;
+}
+
+.map-hole {
+  fill: rgba(90, 74, 50, 0.16);
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 90ms ease;
+}
+.map-hole:hover { fill: rgba(90, 74, 50, 0.3); }
+.map-hole.is-active {
+  fill: rgba(200, 134, 26, 0.28);
+  stroke: var(--selection);
+  stroke-width: 2;
+}
+
+.map-label {
+  fill: var(--fg);
+  font-family: inherit;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums oldstyle-nums;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+.map-label-hole {
+  fill: var(--muted-2);
+  font-style: italic;
+}
